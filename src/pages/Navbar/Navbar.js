@@ -14,10 +14,10 @@ function Navbar() {
             <input type="checkbox" id="chk1" />
             <div className='logo'><h1>Social Influencer</h1></div>
             <div className='search-box'>
-                <form >
-                    <input type="text" name='search' id='srch' placeholder='Search' />
-                    <button type='submit'><BsSearch /></button>
-                </form>
+
+                <input type="text" name='search' id='srch' placeholder='Search' />
+                <button type='submit'><BsSearch /></button>
+
             </div>
             <ul>
                 <li><Link to='/' >Home </Link></li>
@@ -37,6 +37,7 @@ function Navbar() {
             </div>
 
         </nav>
+        <div className='Msg'><h1>Lets signup and start chat with the world</h1></div>
     </div>
 }
 
