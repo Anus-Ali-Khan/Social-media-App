@@ -1,39 +1,33 @@
 import React from "react";
-import { BiSolidUser } from 'react-icons/bi'
-import { BiSolidLockAlt } from 'react-icons/bi'
-import { MdFacebook } from 'react-icons/md'
-import { AiFillTwitterCircle } from 'react-icons/ai'
-import { AiFillGoogleCircle } from 'react-icons/ai'
+import '../SignUp/Signup.css';
 
 function Signup() {
 
     return <div className="login-container">
         <div className="wrapper">
             <form action="">
-                <h1>Sign Up</h1>
+                <h1>Create Account </h1>
                 <div className="input-box">
-                    <input type="text" placeholder="Username" required />
-                    < BiSolidUser className="i" />
+                    <input type="text" placeholder="First Name" required />
+                </div>
+                <div className="input-box">
+                    <input type="text" placeholder="Last Name" required />
+                </div>
+                <div className="input-box">
+                    <input type="email" placeholder="Email" required />
                 </div>
                 <div className="input-box">
                     <input type="password" placeholder="Password" required />
-                    < BiSolidLockAlt className="i" />
+                </div>
+                <div className="input-box">
+                    <input type="password" placeholder="Confirm Password" required />
                 </div>
                 <div className="remember-forgot">
-                    <label><input type="checkbox" />Remember me</label>
-                    <a href="#"> Forgot Password?</a>
+                    <label><input type="checkbox" />I accept all the terms & conditions</label>
                 </div>
-
                 <button type="submit" className="btn" >Submit</button>
-                <p className="signup">Or Sign Up Using</p>
-                <div className="icons">
-                    <a href="#">< MdFacebook id="f-icon" /></a>
-                    <a href="#">< AiFillTwitterCircle id="t-icon" /></a>
-                    <a href="#">< AiFillGoogleCircle id="g-icon" /></a>
-                </div>
-
                 <div className="register-link">
-                    <p>Don't have an account? <a href="#">Signup</a></p>
+                    <p>Already have an account? <a href="#">Login here</a></p>
                 </div>
             </form>
         </div>
