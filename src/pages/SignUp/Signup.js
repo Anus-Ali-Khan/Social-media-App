@@ -1,25 +1,32 @@
 import React from "react";
 import '../SignUp/Signup.css';
+import Profilepic from "./profilepic";
+
+
+
 
 function Signup() {
 
     return <div className="login-container">
-        <div className="wrapper">
+        <div className="sign-up-wrapper">
             <form action="">
                 <h1>Create Account </h1>
-                <div className="input-box">
+                <div className="pic">
+                    <Profilepic />
+                </div>
+                <div className="signup-input-box">
                     <input type="text" placeholder="First Name" required />
                 </div>
-                <div className="input-box">
+                <div className="signup-input-box">
                     <input type="text" placeholder="Last Name" required />
                 </div>
-                <div className="input-box">
+                <div className="signup-input-box">
                     <input type="email" placeholder="Email" required />
                 </div>
-                <div className="input-box">
-                    <input type="password" placeholder="Password" required />
+                <div className="signup-input-box">
+                    <input type="password" placeholder="Create Password" required />
                 </div>
-                <div className="input-box">
+                <div className="signup-input-box">
                     <input type="password" placeholder="Confirm Password" required />
                 </div>
                 <div className="remember-forgot">
