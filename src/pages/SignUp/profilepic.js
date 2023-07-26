@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { storage } from '../../firebase';
 import { Avatar } from '@mui/material';
+import { v4 } from 'uuid';
 
 
 function Profilepic() {
@@ -18,7 +19,8 @@ function Profilepic() {
     }
 
     const handleSubmit = () => {
-        const imageRef = ref(storage, "image");
+        if (image == null) return;
+        const imageRef = ref(storage, `images/${image.name + v4()}`);
         uploadBytes(imageRef, image).then(() => {
             getDownloadURL(imageRef)
                 .then((url) => {
@@ -42,8 +44,10 @@ function Profilepic() {
             src={url}
             sx={{ width: 150, height: 150 }}
         />
-        <input type="file" onChange={handleImageChange} />
-        <button onClick={handleSubmit}>Submit</button>
+        <div className='input-btn'>
+            <input type="file" onChange={handleImageChange} />
+            <button onClick={handleSubmit}>Upload Image</button>
+        </div>
     </div>
 
 }
