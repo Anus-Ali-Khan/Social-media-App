@@ -1,0 +1,25 @@
+.background {
+    background-image: url("../../assets/images/createpost.jpg");
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.nav {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    z-index: 99;
+    box-shadow: 0 0 10px #000;
+    background: rgba(0, 0, 0, 0.5);
+    color: aliceblue;
+
+}
+
+.nav h2 Link {
+    text-decoration: none;
+}
