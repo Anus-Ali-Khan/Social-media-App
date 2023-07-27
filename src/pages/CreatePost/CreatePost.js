@@ -6,11 +6,16 @@ import { Link } from 'react-router-dom';
 
 function CreatePost() {
 
-    return <div className='background'>
+    return <div className='createpostpage'>
         <div className='nav'>
-            <h2><Link to='/'>Home</Link></h2>
-            <h2>Create Post</h2>
-            <button>Logout</button>
+            <h1 className='logo'>SOCIAL INFLUENCER</h1>
+            <div className='clicks'>
+                <p><Link to='/'>Home</Link></p>
+                <button className='btn'>Logout</button>
+            </div>
+        </div>
+        <div className=''>
+
         </div>
     </div>
 }
