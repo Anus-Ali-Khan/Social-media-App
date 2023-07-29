@@ -11,7 +11,7 @@ function CreatePost() {
             <h1 className='logo'>SOCIAL INFLUENCER</h1>
             <div className='clicks'>
                 <p><Link to='/'>Home</Link></p>
-                <button className='btn'>Logout</button>
+                <button className='btn'>Signout</button>
             </div>
         </div>
         <div className=''>

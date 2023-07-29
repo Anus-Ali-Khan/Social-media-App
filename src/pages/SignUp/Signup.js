@@ -1,6 +1,7 @@
 import React from "react";
 import '../SignUp/Signup.css';
 import Profilepic from "./profilepic";
+import { Link } from "react-router-dom";
 
 
 
@@ -34,7 +35,7 @@ function Signup() {
                 </div>
                 <button type="submit" className="btn" >Submit</button>
                 <div className="register-link">
-                    <p>Already have an account? <a href="#">Login here</a></p>
+                    <p>Already have an account? <a href="/login">Login here</a></p>
                 </div>
             </form>
         </div>

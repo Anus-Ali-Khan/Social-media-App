@@ -116,6 +116,7 @@
 
 }
 
+
 .wrapper .icons a {
     text-decoration: none;
 }
@@ -124,16 +125,29 @@
     border-bottom: 2px solid aliceblue;
 }
 
+.wrapper .icons .socialmedia {
+    background-color: white;
+    border-radius: 100%;
+    height: 2rem;
+    width: 2rem;
+
+}
+
 .wrapper .icons #f-icon {
     color: darkblue;
+
+
 }
 
 .wrapper .icons #t-icon {
-    color: skyblue;
+    color: #1a9ff2;
+
 }
 
+
 .wrapper .icons #g-icon {
-    color: orangered;
+    color: red;
+
 }
 
 .wrapper .register-link {
