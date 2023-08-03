@@ -14,9 +14,8 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
 
-    const history = useNavigate()
+    const navigate = useNavigate()
 
-    const [login, setLogin] = useState(false)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
@@ -25,7 +24,7 @@ function Login() {
 
         signInWithEmailAndPassword(auth, email, password).then(data => {
             console.log(data, "authData")
-            history("/")
+            navigate("/")
         })
 
     }
@@ -35,14 +34,27 @@ function Login() {
         <div className="wrapper">
             <form onSubmit={handleSubmit}>
                 <h1>Login</h1>
+
                 <div className="input-box">
-                    <input type="email" placeholder="Email" required value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
                     < BiSolidUser className="i" />
                 </div>
+
                 <div className="input-box">
-                    <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                    <input type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
                     < BiSolidLockAlt className="i" />
                 </div>
+
                 <div className="remember-forgot">
                     <label><input type="checkbox" />Remember me</label>
                     <a href="#"> Forgot Password?</a>
@@ -50,6 +62,7 @@ function Login() {
 
                 <button type="submit" className="btn" >Login </button>
                 <p className="signup">Or Signup Using</p>
+
                 <div className="icons">
                     <div className="socialmedia"> <a href="#">< MdFacebook id="f-icon" /></a></div>
                     <div className="socialmedia"><a href="#">< AiFillTwitterCircle id="t-icon" /></a></div>
