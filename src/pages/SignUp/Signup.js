@@ -21,12 +21,11 @@ function Signup() {
     })
 
 
-
     const navigate = useNavigate();
-    const postsCollectionRef = collection(db, "users")
+    const usersCollectionRef = collection(db, "users");
 
     const createUser = async (data) => {
-        await addDoc(postsCollectionRef, { firstName: state.firstName, lastName: state.lastName, email: state.email, id: data.user.uid })
+        await addDoc(usersCollectionRef, { firstName: state.firstName, lastName: state.lastName, email: state.email, id: data.user.uid })
         navigate("/")
     }
 
