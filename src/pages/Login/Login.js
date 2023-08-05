@@ -1,6 +1,6 @@
 import React from "react";
 import '../Login/Login.css';
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { BiSolidUser } from 'react-icons/bi'
@@ -10,14 +10,17 @@ import { AiFillTwitterCircle } from 'react-icons/ai'
 import { AiFillGoogleCircle } from 'react-icons/ai'
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { login } from "../../components/users";
+import { setUser } from "../../components/users";
+import { doc, getDoc } from "firebase/firestore";
+
 
 
 function Login() {
 
 
     const navigate = useNavigate();
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
+
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -25,7 +28,11 @@ function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        signInWithEmailAndPassword(auth, email, password).then(data => {
+        signInWithEmailAndPassword(auth, email, password).then(async data => {
+            const docRef = doc(db, "users", data.user.uid)
+            const docSnap = await getDoc(docRef);
+            dispatch(setUser(docSnap.data()))
+            // console.log(data)
             navigate("/")
         })
 
@@ -62,7 +69,7 @@ function Login() {
                     <a href="#"> Forgot Password?</a>
                 </div>
 
-                <button type="submit" className="btn" onClick={() => dispatch(login)}>Login </button>
+                <button type="submit" className="btn" >Login </button>
                 <p className="signup">Or Signup Using</p>
 
                 <div className="icons">

@@ -33,7 +33,7 @@ function Signup() {
         e.preventDefault();
         createUserWithEmailAndPassword(auth, state.email, state.password).then(async data => {
             await createUser(data);
-            navigate("/s")
+            navigate("/")
         })
 
     }
