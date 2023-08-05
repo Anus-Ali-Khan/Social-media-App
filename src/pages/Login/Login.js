@@ -9,12 +9,15 @@ import { MdFacebook } from 'react-icons/md'
 import { AiFillTwitterCircle } from 'react-icons/ai'
 import { AiFillGoogleCircle } from 'react-icons/ai'
 import { useNavigate } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { login } from "../../components/users";
 
 
 function Login() {
 
-    const navigate = useNavigate()
+
+    const navigate = useNavigate();
+    // const dispatch = useDispatch();
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -23,7 +26,6 @@ function Login() {
         e.preventDefault();
 
         signInWithEmailAndPassword(auth, email, password).then(data => {
-            console.log(data, "authData")
             navigate("/")
         })
 
@@ -60,7 +62,7 @@ function Login() {
                     <a href="#"> Forgot Password?</a>
                 </div>
 
-                <button type="submit" className="btn" >Login </button>
+                <button type="submit" className="btn" onClick={() => dispatch(login)}>Login </button>
                 <p className="signup">Or Signup Using</p>
 
                 <div className="icons">

@@ -5,7 +5,7 @@ import { auth, db } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { addDoc, collection } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 
 
 
@@ -22,19 +22,18 @@ function Signup() {
 
 
     const navigate = useNavigate();
-    const usersCollectionRef = collection(db, "users");
+
 
     const createUser = async (data) => {
-        await addDoc(usersCollectionRef, { firstName: state.firstName, lastName: state.lastName, email: state.email, id: data.user.uid })
-        navigate("/")
+        await setDoc(doc(db, "users", data.user.uid), { firstName: state.firstName, lastName: state.lastName, email: state.email, id: data.user.uid })
+
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        createUserWithEmailAndPassword(auth, state.email, state.password).then(data => {
-            createUser(data);
-            navigate("/")
+        createUserWithEmailAndPassword(auth, state.email, state.password).then(async data => {
+            await createUser(data);
+            navigate("/s")
         })
 
     }

@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getDocs, collection } from 'firebase/firstore';
 
-const usersCollectionRef = collection(db, "users");
-const initialStateValue = getDocs(usersCollectionRef);
+
+const initialStateValue = {
+    currentUser: {},
+};
 
 export const userSlice = createSlice({
-
     name: "user",
-    initialvalue: { value: initialStateValue },
+    initialState: { value: initialStateValue },
     reducers: {
-        login: (state, action) => {
-            state.value = action.payload
-        }
+        setUser: (state, action) => {
+            state.value.currentUser = action.payload
+        },
     }
 
 })
