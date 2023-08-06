@@ -1,5 +1,6 @@
 import React from "react";
-import "./Cpnav.css";
+import "../CreatePost/Cpnav.css";
+import { Link } from "react-router-dom";
 
 function Cpnav() {
   return (

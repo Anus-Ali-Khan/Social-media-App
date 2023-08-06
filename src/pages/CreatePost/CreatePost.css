@@ -1,21 +1,73 @@
 .createpostpage {
     background-image: url("../../assets/images/blue.avif");
-    height: calc(100vh);
+    height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 
 }
 
+.createpostpage .CP {
+    width: 100%;
+    height: calc(100vh - 80px);
+    display: grid;
+    place-items: center;
+}
+
 .cpContainer {
-    padding: 20px;
     width: 500px;
     height: auto;
+    padding: 20px;
+    margin-top: 80px;
     background-color: black;
     border-radius: 12px;
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+}
+
+
+.cpContainer h1 {
+    text-align: center;
+}
+
+.cpContainer label {
+    font-size: 25px;
+}
+
+.cpContainer .inputGp {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputGp input,
+.inputGp textarea {
+    font-size: 18px;
+    border: none;
+    border-radius: 2px;
+    padding: 5px;
+}
+
+.inputGp input {
+    height: 40px;
+}
+
+.inputGp textarea {
+    height: 150px;
+}
+
+.cpContainer button {
+    margin-top: 20px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+input,
+textarea {
+    margin-top: 5px;
 }

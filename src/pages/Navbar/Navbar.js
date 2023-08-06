@@ -13,7 +13,7 @@ import { clearUser } from "../../components/users";
 function Navbar() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
-  console.log(user);
+
   return (
     <div className="navbar">
       <nav className="header">
