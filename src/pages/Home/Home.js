@@ -4,6 +4,7 @@ import Navbar from "../Navbar/Navbar";
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { db, auth } from "../../firebase";
 import { useState, useEffect } from "react";
+import "./Home.css";
 
 function Home() {
   const user = useSelector((state) => state.user.value);
@@ -37,19 +38,27 @@ function Home() {
     <div className="home">
       <Navbar />
       <div className="homePage">
-        {postLists.map((post) => {
-          return (
-            <div className="post">
-              <div className="postHeader">
-                <div className="title">
-                  <h1>{post.title}</h1>
+        {!user.currentUser.hasOwnProperty("id") ? (
+          <div className="Msg">
+            <h1>Lets signup and start chat with the world</h1>
+          </div>
+        ) : (
+          <div className="posts">
+            {postLists.map((post) => {
+              return (
+                <div className="post">
+                  <div className="postHeader">
+                    <div className="title">
+                      <h1>{post.title}</h1>
+                    </div>
+                    <div className="postTextContainer">{post.post}</div>
+                    <h3>@{post.name}</h3>
+                  </div>
                 </div>
-                <div className="postTextContainer">{post.post}</div>
-                <h3>@{post.name}</h3>
-              </div>
-            </div>
-          );
-        })}
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

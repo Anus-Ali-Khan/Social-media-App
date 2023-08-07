@@ -72,9 +72,6 @@ function Navbar() {
           </label>
         </div>
       </nav>
-      <div className="Msg">
-        <h1>Lets signup and start chat with the world</h1>
-      </div>
     </div>
   );
 }

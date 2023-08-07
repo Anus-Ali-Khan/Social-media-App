@@ -68,13 +68,12 @@ function Login() {
           </div>
 
           <button type="submit" className="btn">
-            Login{" "}
+            Login
           </button>
           <p className="signup">Or Signup Using</p>
 
           <div className="icons">
             <div className="socialmedia">
-              {" "}
               <a href="#">
                 <MdFacebook id="f-icon" />
               </a>

@@ -5,13 +5,7 @@
     font-family: arial;
 }
 
-.navbar {
-    background: url(../../assets/images/v1016-c-08_1-ksh6mza3.jpg);
-    background-size: cover;
-    height: 100vh;
-    background-position: center;
 
-}
 
 .header {
     width: 100%;
@@ -19,7 +13,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
     /* z-index: 99; */
     box-shadow: 0 0 10px #000;
     background: rgba(0, 0, 0, 0.5);
@@ -71,7 +64,7 @@
     border-radius: 30px;
     border: none;
     position: absolute;
-    top: 0.5px;
+    top: 5px;
     right: 0.5px;
     transform: scale(0.9);
     background: green;
@@ -107,14 +100,7 @@
     color: #fff;
 }
 
-.navbar .Msg h1 {
-    display: flex;
-    justify-content: center;
-    padding: 20rem;
-    color: #fff;
-    font-size: 3rem;
-    text-align: center;
-}
+
 
 @media(max-width:1000px) {
     .search-box button {
