@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
-import { collection, getDocs, doc } from "firebase/firestore";
+import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { db, auth } from "../../firebase";
 import { useState, useEffect } from "react";
 
@@ -13,12 +13,22 @@ function Home() {
   useEffect(() => {
     const getPosts = async () => {
       const data = await getDocs(postsCollectionRef);
-      setPostList(
-        data.docs.map((doc) => {
-          console.log(doc.data());
-          return { ...doc.data() };
-        })
-      );
+
+      const newPostsList = [];
+
+      for (var i = 0; i < data.docs.length; i++) {
+        const docRef = doc(db, "users", data.docs[i].data().userid);
+        const userDoc = await getDoc(docRef);
+
+        const postData = {
+          ...data.docs[i].data(),
+          name: userDoc.data().firstName + userDoc.data().lastName,
+        };
+
+        newPostsList.push(postData);
+      }
+
+      setPostList(newPostsList);
     };
     getPosts();
   }, []);
@@ -26,7 +36,21 @@ function Home() {
   return (
     <div className="home">
       <Navbar />
-      <div className="homePage"></div>
+      <div className="homePage">
+        {postLists.map((post) => {
+          return (
+            <div className="post">
+              <div className="postHeader">
+                <div className="title">
+                  <h1>{post.title}</h1>
+                </div>
+                <div className="postTextContainer">{post.post}</div>
+                <h3>@{post.name}</h3>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
