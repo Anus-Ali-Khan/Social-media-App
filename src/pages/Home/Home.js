@@ -1,15 +1,27 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
-import { collection, getDocs, doc, getDoc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  doc,
+  getDoc,
+  deleteDoc,
+} from "firebase/firestore";
 import { db, auth } from "../../firebase";
 import { useState, useEffect } from "react";
 import "./Home.css";
+import { MdDelete } from "react-icons/md";
 
 function Home() {
   const user = useSelector((state) => state.user.value);
   const [postLists, setPostList] = useState([]);
   const postsCollectionRef = collection(db, "posts");
+
+  const deletePost = async (id) => {
+    const postDoc = doc(db, "posts", id);
+    await deleteDoc(postDoc);
+  };
 
   useEffect(() => {
     const getPosts = async () => {
@@ -32,7 +44,7 @@ function Home() {
       setPostList(newPostsList);
     };
     getPosts();
-  }, []);
+  }, [deletePost]);
 
   return (
     <div className="home">
@@ -48,8 +60,15 @@ function Home() {
               return (
                 <div className="post">
                   <div className="postHeader">
-                    <div className="title">
-                      <h1>{post.title}</h1>
+                    <div className="titlendelete">
+                      <div className="title">
+                        <h1>{post.title}</h1>
+                      </div>
+                      <div className="deletePost">
+                        <button onClick={() => deletePost(post.id)}>
+                          <MdDelete className="delete" />
+                        </button>
+                      </div>
                     </div>
                     <div className="postTextContainer">{post.post}</div>
                     <h3>@{post.name}</h3>
