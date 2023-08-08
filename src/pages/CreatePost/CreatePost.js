@@ -22,9 +22,11 @@ function CreatePost() {
       id,
       title,
       post,
+      date: new Date(),
       userid: user.currentUser.id,
     };
     await setDoc(doc(db, "posts", id), userPost);
+    console.log(userPost);
     navigate("/");
   };
 

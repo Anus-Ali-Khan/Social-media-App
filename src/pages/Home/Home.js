@@ -72,6 +72,7 @@ function Home() {
                     </div>
                     <div className="postTextContainer">{post.post}</div>
                     <h3>@{post.name}</h3>
+                    <h3>{post.date.toDate().toDateString()}</h3>
                   </div>
                 </div>
               );
