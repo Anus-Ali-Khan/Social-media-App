@@ -52,6 +52,9 @@ function Navbar() {
             </li>
           )}
           <li>
+            <Link to="/post">Posts</Link>
+          </li>
+          <li>
             <Link to="/createpost">createpost </Link>
           </li>
           <li className="icons">

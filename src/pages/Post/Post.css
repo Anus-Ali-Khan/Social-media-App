@@ -1,0 +1,8 @@
+.postPage {
+    background-image: url("../../assets/images/blue.avif");
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
