@@ -12,11 +12,13 @@ import { db, auth } from "../../firebase";
 import { useState, useEffect } from "react";
 import "./Home.css";
 import { MdDelete } from "react-icons/md";
+import { AiFillLike } from "react-icons/ai";
 
 function Home() {
   const user = useSelector((state) => state.user.value);
   const [postLists, setPostList] = useState([]);
   const postsCollectionRef = collection(db, "posts");
+  const [like, setLike] = useState(0);
 
   const deletePost = async (id) => {
     const postDoc = doc(db, "posts", id);
@@ -73,6 +75,17 @@ function Home() {
                     <div className="postTextContainer">{post.post}</div>
                     <h3>@{post.name}</h3>
                     <h3>{post.date.toDate().toDateString()}</h3>
+                    <div className="like-btn">
+                      <button style={{ marginBottom: "0.5rem" }}>
+                        <AiFillLike
+                          style={{
+                            fontSize: "1.5rem",
+                            width: "3rem",
+                          }}
+                        />
+                      </button>
+                      <p>Likes {like}</p>
+                    </div>
                   </div>
                 </div>
               );
