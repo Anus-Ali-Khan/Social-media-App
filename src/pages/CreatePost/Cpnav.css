@@ -40,7 +40,12 @@
     font-weight: 600;
 }
 
+.clicks .btn a {
+    color: #000000;
+}
+
 .clicks .btn:hover {
     background-color: orangered;
     color: white;
+
 }

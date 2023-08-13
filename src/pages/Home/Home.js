@@ -48,6 +48,14 @@ function Home() {
     getPosts();
   }, [deletePost]);
 
+  const handleLikeClick = async () => {
+    if (user.currentUser.hasOwnProperty("id")) {
+      const getLike = doc(db, "posts", "likes");
+      const docSnap = await getDoc(getLike);
+      console.log(docSnap);
+    }
+  };
+
   return (
     <div className="home">
       <Navbar />
@@ -76,7 +84,10 @@ function Home() {
                     <h3>@{post.name}</h3>
                     <h3>{post.date.toDate().toDateString()}</h3>
                     <div className="like-btn">
-                      <button style={{ marginBottom: "0.5rem" }}>
+                      <button
+                        onClick={handleLikeClick}
+                        style={{ marginBottom: "0.5rem" }}
+                      >
                         <AiFillLike
                           style={{
                             fontSize: "1.5rem",

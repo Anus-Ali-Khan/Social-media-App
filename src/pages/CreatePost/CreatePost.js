@@ -24,6 +24,7 @@ function CreatePost() {
       post,
       date: new Date(),
       userid: user.currentUser.id,
+      likes: [],
     };
     await setDoc(doc(db, "posts", id), userPost);
     console.log(userPost);
