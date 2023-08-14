@@ -70,29 +70,3 @@
     overflow-y: auto;
     text-align: center;
 }
-
-.posts .titlendelete {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.posts .deletePost {
-    position: absolute;
-    right: 0;
-    top: 0.5rem;
-    left: 15rem;
-}
-
-.deletePost .delete {
-    font-size: 1.2rem;
-    cursor: pointer;
-
-}
-
-
-.deletePost .delete:hover {
-    color: red;
-}

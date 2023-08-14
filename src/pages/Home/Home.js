@@ -1,18 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
-import {
-  collection,
-  getDocs,
-  doc,
-  getDoc,
-  deleteDoc,
-  setDoc,
-} from "firebase/firestore";
+import { collection, getDocs, doc, getDoc, setDoc } from "firebase/firestore";
 import { db, auth } from "../../firebase";
 import { useState, useEffect } from "react";
 import "./Home.css";
-import { MdDelete } from "react-icons/md";
+
 import { AiFillLike } from "react-icons/ai";
 
 function Home() {
@@ -20,11 +13,6 @@ function Home() {
   const [postLists, setPostList] = useState([]);
   const postsCollectionRef = collection(db, "posts");
   const [like, setLike] = useState(0);
-
-  const deletePost = async (id) => {
-    const postDoc = doc(db, "posts", id);
-    await deleteDoc(postDoc);
-  };
 
   const getPosts = async () => {
     const data = await getDocs(postsCollectionRef);
@@ -92,11 +80,6 @@ function Home() {
                     <div className="titlendelete">
                       <div className="title">
                         <h1>{post.title}</h1>
-                      </div>
-                      <div className="deletePost">
-                        <button onClick={() => deletePost(post.id)}>
-                          <MdDelete className="delete" />
-                        </button>
                       </div>
                     </div>
                     <div className="postTextContainer">{post.post}</div>
