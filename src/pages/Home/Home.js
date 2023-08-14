@@ -7,6 +7,7 @@ import {
   doc,
   getDoc,
   deleteDoc,
+  setDoc,
 } from "firebase/firestore";
 import { db, auth } from "../../firebase";
 import { useState, useEffect } from "react";
@@ -25,34 +26,52 @@ function Home() {
     await deleteDoc(postDoc);
   };
 
+  const getPosts = async () => {
+    const data = await getDocs(postsCollectionRef);
+
+    const newPostsList = [];
+
+    for (var i = 0; i < data.docs.length; i++) {
+      const docRef = doc(db, "users", data.docs[i].data().userid);
+      const userDoc = await getDoc(docRef);
+
+      const postData = {
+        ...data.docs[i].data(),
+        name: userDoc.data().firstName + userDoc.data().lastName,
+      };
+
+      newPostsList.push(postData);
+    }
+
+    setPostList(newPostsList);
+  };
+
   useEffect(() => {
-    const getPosts = async () => {
-      const data = await getDocs(postsCollectionRef);
+    getPosts();
+  }, []);
 
-      const newPostsList = [];
-
-      for (var i = 0; i < data.docs.length; i++) {
-        const docRef = doc(db, "users", data.docs[i].data().userid);
-        const userDoc = await getDoc(docRef);
-
-        const postData = {
-          ...data.docs[i].data(),
-          name: userDoc.data().firstName + userDoc.data().lastName,
-        };
-
-        newPostsList.push(postData);
+  const handleLikeClick = async (post) => {
+    if (user.currentUser.hasOwnProperty("id")) {
+      const postLike = post.likes;
+      function userLikes(userid) {
+        return userid !== user.currentUser.id;
       }
 
-      setPostList(newPostsList);
-    };
-    getPosts();
-  }, [deletePost]);
+      if (postLike.includes(user.currentUser.id)) {
+        const newLikeArray = postLike.filter(userLikes);
+        const removelikeTofirebase = doc(db, "posts", post.id);
+        await setDoc(
+          removelikeTofirebase,
+          { likes: newLikeArray },
+          { merge: true }
+        );
+      } else {
+        postLike.push(user.currentUser.id);
+        const addLikeToFirbase = doc(db, "posts", post.id);
+        await setDoc(addLikeToFirbase, { likes: postLike }, { merge: true });
+      }
 
-  const handleLikeClick = async () => {
-    if (user.currentUser.hasOwnProperty("id")) {
-      const getLike = doc(db, "posts", "likes");
-      const docSnap = await getDoc(getLike);
-      console.log(docSnap);
+      getPosts();
     }
   };
 
@@ -85,7 +104,7 @@ function Home() {
                     <h3>{post.date.toDate().toDateString()}</h3>
                     <div className="like-btn">
                       <button
-                        onClick={handleLikeClick}
+                        onClick={() => handleLikeClick(post)}
                         style={{ marginBottom: "0.5rem" }}
                       >
                         <AiFillLike
