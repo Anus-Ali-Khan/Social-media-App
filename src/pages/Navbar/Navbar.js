@@ -45,6 +45,7 @@ function Navbar() {
               <Link
                 onClick={() => {
                   dispatch(clearUser());
+                  localStorage.clear();
                 }}
               >
                 SignOut

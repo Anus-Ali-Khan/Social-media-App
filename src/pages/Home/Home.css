@@ -8,15 +8,15 @@
 .home {
     background: url("../../assets/images/v1016-c-08_1-ksh6mza3.jpg");
     background-size: cover;
-    height: 100vh;
+    min-height: 100vh;
     background-position: center;
-
+    height: auto;
 }
 
 .homePage .Msg h1 {
     display: flex;
     justify-content: center;
-    padding: 20rem;
+    padding: 12rem;
     color: #fff;
     font-size: 3rem;
     text-align: center;
@@ -24,13 +24,10 @@
 
 .home .homePage {
     width: 100%;
-    max-height: calc(100vh - 80px);
-    height: calc(100vh-80px);
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 20px;
-    overflow: scroll;
 }
 
 

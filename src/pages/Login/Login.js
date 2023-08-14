@@ -19,6 +19,7 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberme, setRememberme] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,6 +28,10 @@ function Login() {
       const docRef = doc(db, "users", data.user.uid);
       const docSnap = await getDoc(docRef);
       dispatch(setUser(docSnap.data()));
+
+      rememberme
+        ? localStorage.setItem("user", JSON.stringify(docSnap.data()))
+        : localStorage.clear();
       navigate("/");
     });
   };
@@ -61,7 +66,12 @@ function Login() {
 
           <div className="remember-forgot">
             <label>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                value={rememberme}
+                checked={rememberme}
+                onChange={() => setRememberme(!rememberme)}
+              />
               Remember me
             </label>
             <a href="#"> Forgot Password?</a>

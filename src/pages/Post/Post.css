@@ -1,21 +1,19 @@
 .postPage {
     background-image: url("../../assets/images/blue.avif");
-    height: 100vh;
+    min-height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-
+    height: auto;
 }
 
 .postPage .usersPosts {
     width: 100%;
-    max-height: calc(100vh - 80px);
-    height: calc(100vh-80px);
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 120px;
-    overflow: scroll;
+
 }
 
 
