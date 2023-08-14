@@ -85,6 +85,7 @@ function Home() {
                     <div className="postTextContainer">{post.post}</div>
                     <h3>@{post.name}</h3>
                     <h3>{post.date.toDate().toDateString()}</h3>
+
                     <div className="like-btn">
                       <button
                         onClick={() => handleLikeClick(post)}
@@ -94,10 +95,13 @@ function Home() {
                           style={{
                             fontSize: "1.5rem",
                             width: "3rem",
+                            color: post.likes.includes(user.currentUser.id)
+                              ? "blue"
+                              : "grey",
                           }}
                         />
                       </button>
-                      <p>Likes {like}</p>
+                      <p>Likes {post.likes.length}</p>
                     </div>
                   </div>
                 </div>
