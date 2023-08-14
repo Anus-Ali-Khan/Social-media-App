@@ -52,12 +52,16 @@ function Navbar() {
               </Link>
             </li>
           )}
-          <li>
-            <Link to="/post">Posts</Link>
-          </li>
-          <li>
-            <Link to="/createpost">createpost </Link>
-          </li>
+          {user.currentUser.id ? (
+            <>
+              <li>
+                <Link to="/post">Posts</Link>
+              </li>
+              <li>
+                <Link to="/createpost">createpost </Link>
+              </li>
+            </>
+          ) : null}
           <li className="icons">
             <a href="#">
               <FaFacebook />
